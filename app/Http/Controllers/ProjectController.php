@@ -36,19 +36,18 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Project $project)
     {
-        $project = Project::findOrFail($id);
+        $project = Project::findOrFail($project->id);
         $milestones = collect();
-        if ($project->status === 'assigned' && $project->freelancer_id === Auth::id()) {
+        
+        if ($project->status === 'assigned' && ($project->freelancer_id === Auth::id() || $project->owner_id === Auth::id())) {
             $milestones = Milestone::where('project_id', $project->id)->get();
         }
         $bids = collect();
-        if (Gate::allows('viewBids', $project))
-        {
+        if ($project->status === 'open' && $project->owner_id === Auth::id()) {
             $bids = Bid::where('project_id', $project->id)->get();
         }
-    
         return view('projects.show', compact('project', 'milestones', 'bids'));
     }
 

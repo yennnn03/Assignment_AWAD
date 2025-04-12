@@ -22,10 +22,11 @@ class ProjectSeeder extends Seeder
             'title' => 'Web Development Project',
             'description' => 'Build a Laravel-based project management system.',
             'budget' => 10000,
+            'status' => 'assigned',
         ]);
         Project::create([
             'owner_id' => 2,
-            'freelancer_id' => 3,
+            'freelancer_id' => null,
             'title' => 'Project 2',
             'description' => 'Description for project 2',
             'budget' => 2000,
@@ -36,10 +37,12 @@ class ProjectSeeder extends Seeder
             'title' => 'Project 3',
             'description' => 'Description for project 3',
             'budget' => 3000,
+            'status' => 'assigned',
+
         ]);
         Project::create([
             'owner_id' => 1,
-            'freelancer_id' => 3,
+            'freelancer_id' => null,
             'title' => 'Project 4',
             'description' => 'Description for project 4',
             'budget' => 4000,
@@ -50,6 +53,8 @@ class ProjectSeeder extends Seeder
             'title' => 'Project 5',
             'description' => 'Description for project 5',
             'budget' => 5000,
+            'status' => 'assigned',
+
         ]);
         Project::create([
             'owner_id' => 3,
@@ -57,6 +62,8 @@ class ProjectSeeder extends Seeder
             'title' => 'Project 6',
             'description' => 'Description for project 6',
             'budget' => 6000,
+            'status' => 'assigned',
+
         ]);
         Project::create([
             'owner_id' => 1,
@@ -64,6 +71,8 @@ class ProjectSeeder extends Seeder
             'title' => 'Project 7',
             'description' => 'Description for project 7',
             'budget' => 7000,
+            'status' => 'assigned',
+
         ]);
         Project::create([
             'owner_id' => 2,
@@ -71,6 +80,8 @@ class ProjectSeeder extends Seeder
             'title' => 'Project 8',
             'description' => 'Description for project 8',
             'budget' => 8000,
+            'status' => 'assigned',
+
         ]);
 
         Project::reguard();

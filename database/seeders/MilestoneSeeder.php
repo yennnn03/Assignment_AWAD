@@ -32,14 +32,14 @@ class MilestoneSeeder extends Seeder
             'due_date' => '2025-09-01',
         ]);
         Milestone::create([
-            'project_id' => 2,
+            'project_id' => 1,
             'title' => 'Testing Phase',
             'description' => 'Testing and bug fixing.',
             'amount' => 3000,
             'due_date' => '2025-12-01',
         ]);
         Milestone::create([
-            'project_id' => 2,
+            'project_id' => 3,
             'title' => 'Deployment Phase',
             'description' => 'Deployment to production environment.',
             'amount' => 2000,

@@ -15,7 +15,7 @@ return new class extends Migration
         {
             $table->id();
             $table->foreignId('owner_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('freelancer_id')->constrained('users')->onDelete('cascade')->nullable();
+            $table->foreignId('freelancer_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->string('title');
             $table->string('description');
             $table->decimal('budget',10, 2);

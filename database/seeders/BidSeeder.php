@@ -15,28 +15,28 @@ class BidSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=1;'); // Enable foreign key checks
 
         Bid::create([
-            'project_id' => 1,
-            'freelancer_id' => 2,
+            'project_id' => 2,
+            'freelancer_id' => 3,
             'bid_amount' => 5000,
             'msg' => 'I am interested in this project.',
         ]);
         
         Bid::create([
-            'project_id' => 1,
-            'freelancer_id' => 3,
+            'project_id' => 4,
+            'freelancer_id' => 5,
             'bid_amount' => 6000,
             'msg' => 'I can complete this project within a 2 month.',
         ]);
 
         Bid::create([
-            'project_id' => 2,
-            'freelancer_id' => 1,
+            'project_id' => 4,
+            'freelancer_id' => 2,
             'bid_amount' => 7000,
             'msg' => 'I have experience in this field.',
         ]);
 
         Bid::create([
-            'project_id' => 2,
+            'project_id' => 4,
             'freelancer_id' => 4,
             'bid_amount' => 8000,
             'msg' => 'I can deliver high-quality work.',

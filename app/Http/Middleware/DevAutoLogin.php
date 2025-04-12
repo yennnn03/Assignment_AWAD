@@ -12,7 +12,7 @@ class DevAutoLogin
     public function handle(Request $request, Closure $next)
     {
         if (!Auth::check()) {
-            $user = User::first(); // or User::find(1)
+            $user = User::find(1); // or User::find(1)
             Auth::login($user);
         }
 

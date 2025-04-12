@@ -20,9 +20,8 @@ return new class extends Migration
             $table->string('description');
             $table->decimal('amount', 10, 2);
             $table->timestamp('due_date');
-            $table->enum('status',['pending','in_progress','completed','approved','paid','received'])->default('pending');
+            $table->enum('status',['in_progress','completed','approved','paid','received'])->default('in_progress');
             $table->timestamps();
-            $table->timestamp('in_progress_at')->nullable();
             $table->timestamp('completed_at')->nullable();
             $table->timestamp('approved_at')->nullable();
             $table->timestamp('paid_at')->nullable();

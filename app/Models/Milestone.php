@@ -17,7 +17,6 @@ class Milestone extends Model
     protected $guarded = [
         'status',
         'created_at',
-        'in_progress_at',
         'completed_at',
         'approved_at',
         'paid_at',
@@ -25,6 +24,12 @@ class Milestone extends Model
     ];
     
     protected $attributes = [
-        'status' => 'pending',
+        'status' => 'in_progress',
     ];
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
+
 }

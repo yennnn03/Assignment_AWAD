@@ -36,4 +36,5 @@ Route::get('/projects/{project}/milestones/create', [MilestoneController::class,
 Route::post('projects/{project}/milestones', [MilestoneController::class,'store'])->name('milestones.store');
 
 Route::get('/projects/{project}/milestones/index', [MilestoneController::class,'index'])->name('milestones.index');
-Route::get('/projects/{project}/milestones/{milestone}', [MilestoneController::class,'edit'])->name('milestones.edit');
+Route::get('/projects/{project}/milestones/{milestone}/edit', [MilestoneController::class,'edit'])->name('milestones.edit');
+Route::put('/projects/{project}/milestones/{milestone}', [MilestoneController::class,'update'])->name('milestones.update');

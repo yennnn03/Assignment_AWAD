@@ -11,9 +11,13 @@
     <br>
     <label>
         <strong>Message for project owner:</strong><br>
-        <textarea name="msg" cols="30" rows="10"></textarea>
+        <textarea name="msg" cols="30" rows="10" required></textarea>
     </label>
-    <form action="{{route('bids.store', $project->id))}}" method='POST'>
+    <label>
+        <strong>Bid Amount:</strong><br>
+        <input type="number" name="amount" min="0" required>
+    </label>
+    <form action="{{ route('bids.store', $project->id) }}" method="POST">
         <button type='submit'> Submit bid</button>
     </form>
     
