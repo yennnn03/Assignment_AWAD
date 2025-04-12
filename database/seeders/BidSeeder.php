@@ -3,11 +3,17 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Bid;
+use Illuminate\Support\Facades\DB;
 
 class BidSeeder extends Seeder
 {
     public function run()
     {
+        Bid::unguard();
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;'); // Disable foreign key checks
+        Bid::truncate(); // Truncate the bids table
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;'); // Enable foreign key checks
+
         Bid::create([
             'project_id' => 1,
             'freelancer_id' => 2,
@@ -84,6 +90,7 @@ class BidSeeder extends Seeder
             'bid_amount' => 15000,
             'msg' => 'I am passionate about this project.',
         ]);
+        Bid::reguard();
     }
 }
 

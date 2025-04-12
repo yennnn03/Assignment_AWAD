@@ -9,74 +9,90 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        // Clear existing users to avoid duplicates
-        User::query()->delete();
-
-        // Reset auto-increment counter
-        \DB::statement('ALTER TABLE users AUTO_INCREMENT = 1');
-
-        $users = [
-            [
-                'id' => 1,
-                'name' => 'John Doe',
-                'email' => 'johndoe@example.com',
-                'password' => Hash::make('password123'),
-                'bio' => 'Experienced Laravel Developer',
-                'skill' => 'Laravel, PHP, MySQL',
-                
-            ],
-            [
-                'id' => 2,
-                'name' => 'Jane Smith',
-                'email' => 'janesmith@example.com',
-                'password' => Hash::make('securepass'),
-                'bio' => 'Frontend Engineer',
-                'skill' => 'Vue, React, Tailwind',
-                
-            ],
-            [
-                'id' => 3,
-                'name' => 'Alice Johnson',
-                'email' => 'alicejohnson@example.com',
-                'password' => Hash::make('alicepass'),
-                'bio' => 'Project Manager',
-                'skill' => 'Agile, Scrum, Communication',
-                
-            ],
-            [
-                'id' => 4,
-                'name' => 'Bob Brown',
-                'email' => 'bobbrown@example.com',
-                'password' => Hash::make('bob5869'),
-                'bio' => 'Backend Developer',
-                'skill' => 'Node.js, Express, MongoDB',
-               
-            ],
-            [
-                'id' => 5,
-                'name' => 'Charlie Black',
-                'email' => 'charlieblack@example.com',
-                'password' => Hash::make('charliepwd'),
-                'bio' => 'Full Stack Developer',
-                'skill' => 'JavaScript, Python, Django',
-                
-            ],
-            [
-                'id' => 6,
-                'name' => 'Diana White',
-                'email' => 'dianawhite@example.com',
-                'password' => Hash::make('dianapwd'),
-                'bio' => 'UI/UX Designer',
-                'skill' => 'Figma, Sketch, Adobe XD',
-                
-            ]
-        ];
-
-        foreach ($users as $user) {
-            User::updateOrCreate(
-                ['email' => $user['email']],
-                $user
-            );
-        }
+        User::create([
+            'name' => 'John Doe',
+            'email' => 'johndoe@example.com',
+            'password' => Hash::make('password123'),
+            'bio' => 'Experienced Laravel Developer',
+            'skill' => 'Laravel, PHP, MySQL',
+        ]);
+        User::create([
+            'id' => 2, // Freelancer
+            'name' => 'Jane Smith',
+            'email' => 'janesmith@example.com',
+            'password' => Hash::make('securepass'),
+            'bio' => 'Frontend Engineer',
+            'skill' => 'Vue, React, Tailwind',
+        ]);
+        User::create([
+            'name' => 'Alice Johnson',
+            'email' => 'alicejohnson@example.com',
+            'password' => Hash::make('alicepass'),
+            'bio' => 'Backend Developer',
+            'skill' => 'Node.js, Express, MongoDB',
+        ]);
+        User::create([
+            'name' => 'Bob Williams',
+            'email' => 'bobwilliams@example.com',
+            'password' => Hash::make('bobsecure'),
+            'bio' => 'Full Stack Developer',
+            'skill' => 'Angular, Laravel, PostgreSQL',
+        ]);
+        User::create([
+            'name' => 'Charlie Brown',
+            'email' => 'charliebrown@example.com',
+            'password' => Hash::make('charlie123'),
+            'bio' => 'Mobile App Developer',
+            'skill' => 'Flutter, Dart, Firebase',
+        ]);
+        User::create([
+            'name' => 'Diana Prince',
+            'email' => 'dianaprince@example.com',
+            'password' => Hash::make('wonderwoman'),
+            'bio' => 'UI/UX Designer',
+            'skill' => 'Figma, Sketch, Adobe XD',
+        ]);
+        User::create([
+            'name' => 'Ethan Hunt',
+            'email' => 'ethanhunt@example.com',
+            'password' => Hash::make('mission123'),
+            'bio' => 'DevOps Engineer',
+            'skill' => 'Docker, Kubernetes, AWS',
+        ]);
+        User::create([
+            'name' => 'Fiona Gallagher',
+            'email' => 'fionagallagher@example.com',
+            'password' => Hash::make('fionapass'),
+            'bio' => 'Data Scientist',
+            'skill' => 'Python, R, TensorFlow',
+        ]);
+        User::create([
+            'name' => 'George Martin',
+            'email' => 'georgemartin@example.com',
+            'password' => Hash::make('georgepass'),
+            'bio' => 'Game Developer',
+            'skill' => 'Unity, C#, Unreal Engine',
+        ]);
+        User::create([
+            'name' => 'Hannah Lee',
+            'email' => 'hannahlee@example.com',
+            'password' => Hash::make('hannahsecure'),
+            'bio' => 'AI Engineer',
+            'skill' => 'Machine Learning, AI, Python',
+        ]);
+        User::create([
+            'name' => 'Ian Wright',
+            'email' => 'ianwright@example.com',
+            'password' => Hash::make('ianwright123'),
+            'bio' => 'Cybersecurity Specialist',
+            'skill' => 'Penetration Testing, Network Security, Cryptography',
+        ]);
+        User::create([
+            'name' => 'Julia Roberts',
+            'email' => 'juliaroberts@example.com',
+            'password' => Hash::make('juliaroberts'),
+            'bio' => 'Cloud Architect',
+            'skill' => 'Azure, AWS, Google Cloud',
+        ]);
     }
 }
