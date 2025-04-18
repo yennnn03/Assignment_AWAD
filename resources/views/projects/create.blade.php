@@ -19,6 +19,7 @@
         </label><br>
 
         <div id="milestones">
+            <hr>
             <label>
             Milestone 1 Title:<br>
             <input type="text" name="milestones[0][title]" required><br>
@@ -29,7 +30,7 @@
             </label><br>
             <label>
             Milestone 1 Due Date:<br>
-            <input type="date" name="milestones[0][due_date]" required><br>
+            <input type="date" name="milestones[0][due_date]" required min="{{ date('Y-m-d') }}"><br>
             </label><br>
         </div>
         <button type="button" id="add-milestone">+ Add Milestone</button>
@@ -40,7 +41,8 @@
 
             $('#add-milestone').on('click', function () {
             const newMilestone = `
-                <div>
+                <div class="milestone" id="milestone-${milestoneCount}">
+                <hr>
                 <label>
                     Milestone ${milestoneCount + 1} Title:<br>
                     <input type="text" name="milestones[${milestoneCount}][title]" required><br>
@@ -53,10 +55,17 @@
                     Milestone ${milestoneCount + 1} Due Date:<br>
                     <input type="date" name="milestones[${milestoneCount}][due_date]" required><br>
                 </label><br>
+                <button type="button" class="delete-milestone" data-id="milestone-${milestoneCount}">- Delete Milestone</button>
                 </div>
             `;
             $('#milestones').append(newMilestone);
             milestoneCount++;
+            });
+
+            $(document).on('click', '.delete-milestone', function () {
+            const milestoneId = $(this).data('id');
+            $(`#${milestoneId}`).remove();
+            milestoneCount--;
             });
         </script>
         <button type="submit">Create Project</button>
