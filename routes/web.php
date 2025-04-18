@@ -45,5 +45,5 @@ Route::get('/projects/{project}/milestones/index', [MilestoneController::class,'
 Route::get('/projects/{project}/milestones/{milestone}/edit', [MilestoneController::class,'edit'])->name('milestones.edit');
 Route::put('/projects/{project}/milestones/{milestone}', [MilestoneController::class,'update'])->name('milestones.update');
 
-Route::get('/milestones/{milestone}/payment', [PaymentController::class, 'create'])->name('payment.create');
-Route::post('/milestones/{milestone}/payment', [PaymentController::class, 'store'])->name('payment.store');
+Route::get('/milestones/{milestone}/payment', [PaymentController::class, 'create'])->name('payments.create');
+Route::post('/milestones/{milestone}/payment', [PaymentController::class, 'store'])->name('payments.store');
