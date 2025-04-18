@@ -34,40 +34,6 @@
             </label><br>
         </div>
         <button type="button" id="add-milestone">+ Add Milestone</button>
-
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            let milestoneCount = 1;
-
-            $('#add-milestone').on('click', function () {
-            const newMilestone = `
-                <div class="milestone" id="milestone-${milestoneCount}">
-                <hr>
-                <label>
-                    Milestone ${milestoneCount + 1} Title:<br>
-                    <input type="text" name="milestones[${milestoneCount}][title]" required><br>
-                </label><br>
-                <label>
-                    Milestone ${milestoneCount + 1} Description:<br>
-                    <input type="text" name="milestones[${milestoneCount}][description]" required><br>
-                </label><br>
-                <label>
-                    Milestone ${milestoneCount + 1} Due Date:<br>
-                    <input type="date" name="milestones[${milestoneCount}][due_date]" required><br>
-                </label><br>
-                <button type="button" class="delete-milestone" data-id="milestone-${milestoneCount}">- Delete Milestone</button>
-                </div>
-            `;
-            $('#milestones').append(newMilestone);
-            milestoneCount++;
-            });
-
-            $(document).on('click', '.delete-milestone', function () {
-            const milestoneId = $(this).data('id');
-            $(`#${milestoneId}`).remove();
-            milestoneCount--;
-            });
-        </script>
         <button type="submit">Create Project</button>
     </form>
 
