@@ -47,3 +47,7 @@ Route::put('/projects/{project}/milestones/{milestone}', [MilestoneController::c
 
 Route::get('/milestones/{milestone}/payment', [PaymentController::class, 'create'])->name('payment.create');
 Route::post('/milestones/{milestone}/payment', [PaymentController::class, 'store'])->name('payment.store');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
