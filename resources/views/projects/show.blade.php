@@ -3,8 +3,20 @@
 @section('title','Project page')
 
 @section('content')
+    @php
+    $isOpen = $project->status === 'open';
+    @endphp
     @can('view', $project)
         <p><strong>Note:</strong> Created by me</p>
+        <button onclick="window.location='{{ route('projects.edit', $project) }}'" {{ $isOpen ? '' : 'disabled'}}>
+            Edit project
+        </button>
+        <form action="{{ route('projects.destroy', $project) }}" method="POST" style="display:inline;">
+            @csrf
+            @method('DELETE')
+            <button type="submit" onclick="return confirm('Are you sure?')" {{ $isOpen ? '' : 'disabled'}}>Delete</button>
+        </form>
+
     @endcan
     <h1>{{ $project->title }}</h1>
     <p><strong>Description:</strong> {{ $project->description }}</p>
@@ -13,7 +25,7 @@
     <p><strong>Owner ID:</strong> {{ $project->owner_id }}</p>
     <p><strong>Freelancer ID:</strong> {{ $project->freelancer_id ?? 'Not Assigned' }}</p>
 
-    @if ($project->status === 'open')
+    @if ($isOpen)
     <form action="{{ route('bids.create', $project->id) }}" method="GET">
         <button type="submit">Bid Now</button>
     </form>
