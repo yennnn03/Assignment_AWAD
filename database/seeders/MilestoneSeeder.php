@@ -60,8 +60,6 @@ class MilestoneSeeder extends Seeder
             'due_date' => '2025-11-01',
         ]);
 
-
-
         Milestone::reguard();
     }
 }

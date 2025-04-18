@@ -58,4 +58,4 @@ Route::get('/projects/{project}/milestones/{milestone}/edit', [MilestoneControll
 Route::put('/projects/{project}/milestones/{milestone}', [MilestoneController::class,'update'])->name('milestones.update');
 
 Route::get('/milestones/{milestone}/payment', [PaymentController::class, 'create'])->name('payment.create');
-Route::post('/milestones/{milestone}/payment', [PaymentController::class, 'store'])->name('payment.store');
+Route::post('/milestones/{milestone}/payment', [PaymentController::class, 'store'])->name('payments.store');
