@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bid;
 use App\Models\Milestone;
 use App\Models\Project;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -64,6 +65,11 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        try {
+            $this->authorize('updateProject', $project);
+        } catch (AuthorizationException $e) {
+            return redirect()->route('projects.index')->with('error', 'Unauthorized.');
+        }
         return view('projects.edit', ['project' => $project]);
     }
 
@@ -77,7 +83,6 @@ class ProjectController extends Controller
             'description' => ['string','required'],
             'budget' => ['numeric','required'] 
         ]);
-        $incomingFields['owner_id']=Auth::id();
         $project->update($incomingFields);
         
         return redirect()->route('projects.show', ['project' => $project]);
@@ -86,9 +91,10 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('projects.index');
     }
 
     public function showBids(Project $project)

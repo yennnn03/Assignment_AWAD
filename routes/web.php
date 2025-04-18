@@ -31,6 +31,7 @@ Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('pro
 Route::post('/projects', [ProjectController::class,'store'])->name('projects.store');
 Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
 Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
+Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])->name('projects.destroy');
 
 Route::get('/projects/{project}/bids/create', [BidController::class, 'create'])->name('bids.create');
 Route::post('/projects/{project}/bids', [BidController::class, 'store'])->name('bids.store');
@@ -47,3 +48,7 @@ Route::put('/projects/{project}/milestones/{milestone}', [MilestoneController::c
 
 Route::get('/milestones/{milestone}/payment', [PaymentController::class, 'create'])->name('payment.create');
 Route::post('/milestones/{milestone}/payment', [PaymentController::class, 'store'])->name('payment.store');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
