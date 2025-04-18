@@ -26,9 +26,9 @@ class ProjectPolicies
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Project $project): bool
+    public function view(User $user, Project $project)
     {
-        return false;
+        return $project->owner_id === $user->id;
     }
 
     /**

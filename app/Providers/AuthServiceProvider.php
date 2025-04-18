@@ -32,10 +32,5 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('viewBids', function(User $user, Project $project)
-        {
-            return $user->id === $project->owner_id || 
-               $project->bids()->where('freelancer_id', $user->id)->exists();
-        });
     }
 }

@@ -8,6 +8,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class ProjectController extends Controller
 {
@@ -22,7 +23,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('projects.create');
     }
 
     /**
@@ -30,7 +31,15 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $incomingFields = $request->validate([
+            'title' => ['string','required','max:50'],
+            'description' => ['string','required'],
+            'budget' => ['numeric','required'] 
+        ]);
+        $incomingFields['owner_id']=Auth::id();
+        Project::create($incomingFields);
+
+        return redirect()->route('projects.index');
     }
 
     /**
@@ -54,9 +63,9 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        //
+        return view('projects.edit', ['project' => $project]);
     }
 
     /**

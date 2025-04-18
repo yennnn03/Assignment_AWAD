@@ -3,6 +3,9 @@
 @section('title','Project page')
 
 @section('content')
+    @can('view', $project)
+        <p><strong>Note:</strong> Created by me</p>
+    @endcan
     <h1>{{ $project->title }}</h1>
     <p><strong>Description:</strong> {{ $project->description }}</p>
     <p><strong>Budget:</strong> ${{ $project->budget }}</p>

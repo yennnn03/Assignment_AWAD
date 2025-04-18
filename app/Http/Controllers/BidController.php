@@ -22,7 +22,7 @@ class BidController extends Controller
     public function store(Project $project, Request $req)
     {
         $incomingFields = $req->validate([
-            'bid_amount'=>['required','numeric'],
+            'bid_amount'=>['required','numeric'], 
             'msg'=>['required','string'],
         ]);
         $incomingFields['project_id'] = $project->id;

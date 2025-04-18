@@ -40,11 +40,11 @@ class MilestoneController extends Controller
         $incomingFields = $req->validate([
             'title' => ['required', 'string'],
             'description' => ['required', 'string'],
-            'amount' => ['required', 'number'],
+            'amount' => ['required', 'numeric'],
             'due_date' => ['required', 'date'],
             'status' => ['required', 'string'],
         ]);
-        
+        $milestone->status= $incomingFields['status'];
         $milestone->update($incomingFields);
 
         return redirect()->route('projects.show', $milestone->project_id)
