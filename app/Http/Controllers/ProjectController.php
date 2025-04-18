@@ -47,7 +47,6 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        $project = Project::findOrFail($project->id);
         $milestones = collect();
         
         if ($project->status === 'assigned' && ($project->freelancer_id === Auth::id() || $project->owner_id === Auth::id())) {
@@ -71,9 +70,17 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $incomingFields = $request->validate([
+            'title' => ['string','required','max:50'],
+            'description' => ['string','required'],
+            'budget' => ['numeric','required'] 
+        ]);
+        $incomingFields['owner_id']=Auth::id();
+        $project->update($incomingFields);
+        
+        return redirect()->route('projects.show', ['project' => $project]);
     }
 
     /**
