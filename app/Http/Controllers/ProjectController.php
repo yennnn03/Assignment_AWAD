@@ -102,4 +102,6 @@ class ProjectController extends Controller
         $this->authorize('viewBids', $project);
         return response()->json($project->bids);
     }
+
+    
 }
