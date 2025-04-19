@@ -1,28 +1,34 @@
 import React from 'react';
+import { Box, Typography, Chip } from '@mui/material';
 
-const ProjectCard = ({ project, onViewDetails }) => {
+const ProjectCard = ({ project }) => {
     return (
-        <div className="card mb-4 shadow-sm">
-            <div className="card-body">
-                <h3 className="card-title">{project.title}</h3>
-                <p className="card-text text-muted">
-                    {project.description.length > 100 
-                        ? `${project.description.substring(0, 100)}...` 
-                        : project.description}
-                </p>
-                <div className="d-flex justify-content-between align-items-center">
-                    <span className="badge bg-primary rounded-pill">
-                        Budget: ${project.budget.toLocaleString()}
-                    </span>
-                    <button 
-                        onClick={() => onViewDetails(project.id)}
-                        className="btn btn-sm btn-outline-secondary"
-                    >
-                        View Details
-                    </button>
-                </div>
-            </div>
-        </div>
+        <Box
+            sx={{
+                bgcolor: 'background.paper',
+                borderRadius: 2,
+                boxShadow: 1,
+                p: 2,
+                m: 1
+            }}
+        >
+            <Typography variant="h6" gutterBottom>
+                {project.title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary" gutterBottom>
+                {project.description}
+            </Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Typography variant="body2" color="text.secondary">
+                    Budget: {project.budget}
+                </Typography>
+                <Chip
+                    label={project.status}
+                    color={project.status === 'Completed' ? 'success' : 'warning'}
+                    size="small"
+                />
+            </Box>
+        </Box>
     );
 };
 

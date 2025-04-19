@@ -28,4 +28,10 @@
         </div>
     </div>
 </div>
+
+@endsection
+
+@section('script')
+<script src='/js/app.js'></script>
+
 @endsection
